@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services" xmlns:intf="http://services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="rentMovie">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="movieorder" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="rentMovieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="rentMovieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="delMovies">
+    <complexType>
+     <sequence>
+      <element name="movieid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="delMoviesResponse">
+    <complexType>
+     <sequence>
+      <element name="delMoviesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payment">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+      <element name="amount" type="xsd:string"/>
+      <element name="paydate" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="paymentResponse">
+    <complexType>
+     <sequence>
+      <element name="paymentReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createMovies">
+    <complexType>
+     <sequence>
+      <element name="moviename" type="xsd:string"/>
+      <element name="moviebanner" type="xsd:string"/>
+      <element name="category" type="xsd:string"/>
+      <element name="reldate" type="xsd:string"/>
+      <element name="mcopies" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createMoviesResponse">
+    <complexType>
+     <sequence>
+      <element name="createMoviesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="returnMovie">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="movieorder" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="tid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="returnMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="returnMovieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="pMembers">
+    <complexType/>
+   </element>
+   <element name="pMembersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="pMembersReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sMembers">
+    <complexType/>
+   </element>
+   <element name="sMembersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="sMembersReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="allMovies">
+    <complexType/>
+   </element>
+   <element name="allMoviesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="allMoviesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="allPersons">
+    <complexType/>
+   </element>
+   <element name="allPersonsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="allPersonsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePinfo">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="zipcode" type="xsd:string"/>
+      <element name="memberid" type="xsd:string"/>
+      <element name="country" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updatePinfoResponse">
+    <complexType>
+     <sequence>
+      <element name="updatePinfoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateMinfo">
+    <complexType>
+     <sequence>
+      <element name="movieid" type="xsd:string"/>
+      <element name="moviename" type="xsd:string"/>
+      <element name="moviebanner" type="xsd:string"/>
+      <element name="category" type="xsd:string"/>
+      <element name="mcopies" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateMinfoResponse">
+    <complexType>
+     <sequence>
+      <element name="updateMinfoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchMovie">
+    <complexType>
+     <sequence>
+      <element name="moviename" type="xsd:string"/>
+      <element name="moviebanner" type="xsd:string"/>
+      <element name="category" type="xsd:string"/>
+      <element name="reldate" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchMovieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchMovieReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchPerson">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="mtype" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="zipcode" type="xsd:string"/>
+      <element name="memberid" type="xsd:string"/>
+      <element name="country" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchPersonResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchPersonReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieDetails">
+    <complexType>
+     <sequence>
+      <element name="movieid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="movieDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieCount">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieCountResponse">
+    <complexType>
+     <sequence>
+      <element name="movieCountReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="delmember">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="delmemberResponse">
+    <complexType>
+     <sequence>
+      <element name="delmemberReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createMembers">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="mtype" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="city" type="xsd:string"/>
+      <element name="state" type="xsd:string"/>
+      <element name="zipcode" type="xsd:string"/>
+      <element name="memberid" type="xsd:string"/>
+      <element name="mdate" type="xsd:string"/>
+      <element name="country" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createMembersResponse">
+    <complexType>
+     <sequence>
+      <element name="createMembersReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="personDetails">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="personDetailsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="personDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="tableupdation">
+    <complexType>
+     <sequence>
+      <element name="memberid" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="movieorder" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="tableupdationResponse">
+    <complexType>
+     <sequence>
+      <element name="tableupdationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createMembersRequest">
+
+      <wsdl:part element="impl:createMembers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="delmemberRequest">
+
+      <wsdl:part element="impl:delmember" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="delMoviesResponse">
+
+      <wsdl:part element="impl:delMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="returnMovieResponse">
+
+      <wsdl:part element="impl:returnMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="rentMovieResponse">
+
+      <wsdl:part element="impl:rentMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="paymentRequest">
+
+      <wsdl:part element="impl:payment" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sMembersResponse">
+
+      <wsdl:part element="impl:sMembersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchPersonRequest">
+
+      <wsdl:part element="impl:searchPerson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="pMembersResponse">
+
+      <wsdl:part element="impl:pMembersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="paymentResponse">
+
+      <wsdl:part element="impl:paymentResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="tableupdationResponse">
+
+      <wsdl:part element="impl:tableupdationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sMembersRequest">
+
+      <wsdl:part element="impl:sMembers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="returnMovieRequest">
+
+      <wsdl:part element="impl:returnMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchMovieResponse">
+
+      <wsdl:part element="impl:searchMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateMinfoRequest">
+
+      <wsdl:part element="impl:updateMinfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="allMoviesRequest">
+
+      <wsdl:part element="impl:allMovies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="pMembersRequest">
+
+      <wsdl:part element="impl:pMembers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieCountRequest">
+
+      <wsdl:part element="impl:movieCount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="allPersonsRequest">
+
+      <wsdl:part element="impl:allPersons" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePinfoRequest">
+
+      <wsdl:part element="impl:updatePinfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieDetailsRequest">
+
+      <wsdl:part element="impl:movieDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieCountResponse">
+
+      <wsdl:part element="impl:movieCountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMoviesRequest">
+
+      <wsdl:part element="impl:createMovies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateMinfoResponse">
+
+      <wsdl:part element="impl:updateMinfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="delmemberResponse">
+
+      <wsdl:part element="impl:delmemberResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="personDetailsRequest">
+
+      <wsdl:part element="impl:personDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="personDetailsResponse">
+
+      <wsdl:part element="impl:personDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="tableupdationRequest">
+
+      <wsdl:part element="impl:tableupdation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieDetailsResponse">
+
+      <wsdl:part element="impl:movieDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="allPersonsResponse">
+
+      <wsdl:part element="impl:allPersonsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="delMoviesRequest">
+
+      <wsdl:part element="impl:delMovies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMoviesResponse">
+
+      <wsdl:part element="impl:createMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="rentMovieRequest">
+
+      <wsdl:part element="impl:rentMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="allMoviesResponse">
+
+      <wsdl:part element="impl:allMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMembersResponse">
+
+      <wsdl:part element="impl:createMembersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updatePinfoResponse">
+
+      <wsdl:part element="impl:updatePinfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchMovieRequest">
+
+      <wsdl:part element="impl:searchMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchPersonResponse">
+
+      <wsdl:part element="impl:searchPersonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="VideoLibraryManagement">
+
+      <wsdl:operation name="rentMovie">
+
+         <wsdl:input message="impl:rentMovieRequest" name="rentMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:rentMovieResponse" name="rentMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delMovies">
+
+         <wsdl:input message="impl:delMoviesRequest" name="delMoviesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:delMoviesResponse" name="delMoviesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payment">
+
+         <wsdl:input message="impl:paymentRequest" name="paymentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:paymentResponse" name="paymentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMovies">
+
+         <wsdl:input message="impl:createMoviesRequest" name="createMoviesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createMoviesResponse" name="createMoviesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="returnMovie">
+
+         <wsdl:input message="impl:returnMovieRequest" name="returnMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:returnMovieResponse" name="returnMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pMembers">
+
+         <wsdl:input message="impl:pMembersRequest" name="pMembersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:pMembersResponse" name="pMembersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sMembers">
+
+         <wsdl:input message="impl:sMembersRequest" name="sMembersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sMembersResponse" name="sMembersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="allMovies">
+
+         <wsdl:input message="impl:allMoviesRequest" name="allMoviesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:allMoviesResponse" name="allMoviesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="allPersons">
+
+         <wsdl:input message="impl:allPersonsRequest" name="allPersonsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:allPersonsResponse" name="allPersonsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePinfo">
+
+         <wsdl:input message="impl:updatePinfoRequest" name="updatePinfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updatePinfoResponse" name="updatePinfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateMinfo">
+
+         <wsdl:input message="impl:updateMinfoRequest" name="updateMinfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateMinfoResponse" name="updateMinfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchMovie">
+
+         <wsdl:input message="impl:searchMovieRequest" name="searchMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchMovieResponse" name="searchMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchPerson">
+
+         <wsdl:input message="impl:searchPersonRequest" name="searchPersonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchPersonResponse" name="searchPersonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieDetails">
+
+         <wsdl:input message="impl:movieDetailsRequest" name="movieDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:movieDetailsResponse" name="movieDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieCount">
+
+         <wsdl:input message="impl:movieCountRequest" name="movieCountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:movieCountResponse" name="movieCountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delmember">
+
+         <wsdl:input message="impl:delmemberRequest" name="delmemberRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:delmemberResponse" name="delmemberResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMembers">
+
+         <wsdl:input message="impl:createMembersRequest" name="createMembersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createMembersResponse" name="createMembersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="personDetails">
+
+         <wsdl:input message="impl:personDetailsRequest" name="personDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:personDetailsResponse" name="personDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tableupdation">
+
+         <wsdl:input message="impl:tableupdationRequest" name="tableupdationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:tableupdationResponse" name="tableupdationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="VideoLibraryManagementSoapBinding" type="impl:VideoLibraryManagement">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="rentMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="rentMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="rentMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delMovies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="delMoviesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="delMoviesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="payment">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="paymentRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="paymentResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMovies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createMoviesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createMoviesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="returnMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="returnMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="returnMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pMembers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="pMembersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="pMembersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sMembers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sMembersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sMembersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="allMovies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="allMoviesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="allMoviesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="allPersons">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="allPersonsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="allPersonsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updatePinfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updatePinfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updatePinfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateMinfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateMinfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateMinfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchPerson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchPersonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchPersonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="movieDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="movieDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieCount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="movieCountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="movieCountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delmember">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="delmemberRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="delmemberResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMembers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createMembersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createMembersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="personDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="personDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="personDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="tableupdation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="tableupdationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="tableupdationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="VideoLibraryManagementService">
+
+      <wsdl:port binding="impl:VideoLibraryManagementSoapBinding" name="VideoLibraryManagement">
+
+         <wsdlsoap:address location="http://localhost:8080/svlm/services/VideoLibraryManagement"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

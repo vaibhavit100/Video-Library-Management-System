@@ -1,0 +1,159 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from VideoLibraryManagementService WSDL service -->
+
+  <service name="VideoLibraryManagement" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services"/>
+      <parameter name="wsdlServiceElement" value="VideoLibraryManagementService"/>
+      <parameter name="schemaQualified" value="http://services"/>
+      <parameter name="wsdlServicePort" value="VideoLibraryManagement"/>
+      <parameter name="className" value="services.VideoLibraryManagementSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="VideoLibraryManagement"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="movieProfile" qname="operNS:movieProfile" xmlns:operNS="http://services" returnQName="retNS:movieProfileReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:movid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="delmember" qname="operNS:delmember" xmlns:operNS="http://services" returnQName="retNS:delmemberReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createMovies" qname="operNS:createMovies" xmlns:operNS="http://services" returnQName="retNS:createMoviesReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:moviename" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:moviebanner" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:category" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:reldate" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mcopies" xmlns:pns="http://services" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="rentMovie" qname="operNS:rentMovie" xmlns:operNS="http://services" returnQName="retNS:rentMovieReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:movieorder" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:date" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="payment" qname="operNS:payment" xmlns:operNS="http://services" returnQName="retNS:paymentReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:amount" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:paydate" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="pMembers" qname="operNS:pMembers" xmlns:operNS="http://services" returnQName="retNS:pMembersReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="returnMovie" qname="operNS:returnMovie" xmlns:operNS="http://services" returnQName="retNS:returnMovieReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:movieid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:moviename" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:count" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:date" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:tid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="sMembers" qname="operNS:sMembers" xmlns:operNS="http://services" returnQName="retNS:sMembersReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="allMovies" qname="operNS:allMovies" xmlns:operNS="http://services" returnQName="retNS:allMoviesReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="allPersons" qname="operNS:allPersons" xmlns:operNS="http://services" returnQName="retNS:allPersonsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="updatePinfo" qname="operNS:updatePinfo" xmlns:operNS="http://services" returnQName="retNS:updatePinfoReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:fname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipcode" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:country" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="searchMovie" qname="operNS:searchMovie" xmlns:operNS="http://services" returnQName="retNS:searchMovieReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:moviename" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:moviebanner" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:category" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:reldate" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="searchPerson" qname="operNS:searchPerson" xmlns:operNS="http://services" returnQName="retNS:searchPersonReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:fname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mtype" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipcode" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:country" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="movieCount" qname="operNS:movieCount" xmlns:operNS="http://services" returnQName="retNS:movieCountReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="movieDetails" qname="operNS:movieDetails" xmlns:operNS="http://services" returnQName="retNS:movieDetailsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:movieid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="delMovies" qname="operNS:delMovies" xmlns:operNS="http://services" returnQName="retNS:delMoviesReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:movieid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateMinfo" qname="operNS:updateMinfo" xmlns:operNS="http://services" returnQName="retNS:updateMinfoReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:movieid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:moviename" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:moviebanner" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:category" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:releasedate" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mcopies" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="personDetail" qname="operNS:personDetail" xmlns:operNS="http://services" returnQName="retNS:personDetailReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="movieName" qname="operNS:movieName" xmlns:operNS="http://services" returnQName="retNS:movieNameReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:movid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="movieIssue" qname="operNS:movieIssue" xmlns:operNS="http://services" returnQName="retNS:movieIssueReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="signIn" qname="operNS:signIn" xmlns:operNS="http://services" returnQName="retNS:signInReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="premiumtableupdation" qname="operNS:premiumtableupdation" xmlns:operNS="http://services" returnQName="retNS:premiumtableupdationReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:movieorder" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:date" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="simpletableupdation" qname="operNS:simpletableupdation" xmlns:operNS="http://services" returnQName="retNS:simpletableupdationReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cardnum" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cvv" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:movieorder" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:date" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="personDetails" qname="operNS:personDetails" xmlns:operNS="http://services" returnQName="retNS:personDetailsReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="returnmovofmember" qname="operNS:returnmovofmember" xmlns:operNS="http://services" returnQName="retNS:returnmovofmemberReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateLoggedInfo" qname="operNS:updateLoggedInfo" xmlns:operNS="http://services" returnQName="retNS:updateLoggedInfoReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:finallogintime" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createMembers" qname="operNS:createMembers" xmlns:operNS="http://services" returnQName="retNS:createMembersReturn" xmlns:retNS="http://services" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:fname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lname" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mtype" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipcode" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:memberid" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:mdate" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:country" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:logintime" xmlns:pns="http://services" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchMovie personDetail createMembers personDetails allMovies updatePinfo sMembers createMovies simpletableupdation movieDetails searchPerson allPersons payment movieProfile movieIssue delMovies updateMinfo movieCount delmember premiumtableupdation returnMovie movieName updateLoggedInfo returnmovofmember rentMovie signIn pMembers"/>
+
+  </service>
+</deployment>

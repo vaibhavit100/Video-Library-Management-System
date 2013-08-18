@@ -1,0 +1,191 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\Rajan\svlm\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\svlm\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="VideoLibraryManagement" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="movieProfile" qname="ns1:movieProfile" returnQName="ns1:movieProfileReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:movid" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="delmember" qname="ns2:delmember" returnQName="ns2:delmemberReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createMovies" qname="ns3:createMovies" returnQName="ns3:createMoviesReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:moviename" type="xsd:string"/>
+   <ns1:parameter qname="ns3:moviebanner" type="xsd:string"/>
+   <ns1:parameter qname="ns3:category" type="xsd:string"/>
+   <ns1:parameter qname="ns3:reldate" type="xsd:string"/>
+   <ns1:parameter qname="ns3:mcopies" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="rentMovie" qname="ns4:rentMovie" returnQName="ns4:rentMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns4:movieorder" type="xsd:string"/>
+   <ns1:parameter qname="ns4:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="payment" qname="ns5:payment" returnQName="ns5:paymentReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns5:amount" type="xsd:string"/>
+   <ns1:parameter qname="ns5:paydate" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="pMembers" qname="ns6:pMembers" returnQName="ns6:pMembersReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="returnMovie" qname="ns7:returnMovie" returnQName="ns7:returnMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns7:movieid" type="xsd:string"/>
+   <ns1:parameter qname="ns7:moviename" type="xsd:string"/>
+   <ns1:parameter qname="ns7:count" type="xsd:string"/>
+   <ns1:parameter qname="ns7:date" type="xsd:string"/>
+   <ns1:parameter qname="ns7:tid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="sMembers" qname="ns8:sMembers" returnQName="ns8:sMembersReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="allMovies" qname="ns9:allMovies" returnQName="ns9:allMoviesReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="allPersons" qname="ns10:allPersons" returnQName="ns10:allPersonsReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="updatePinfo" qname="ns11:updatePinfo" returnQName="ns11:updatePinfoReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns11:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns11:address" type="xsd:string"/>
+   <ns1:parameter qname="ns11:city" type="xsd:string"/>
+   <ns1:parameter qname="ns11:state" type="xsd:string"/>
+   <ns1:parameter qname="ns11:zipcode" type="xsd:string"/>
+   <ns1:parameter qname="ns11:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns11:country" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="searchMovie" qname="ns12:searchMovie" returnQName="ns12:searchMovieReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:moviename" type="xsd:string"/>
+   <ns1:parameter qname="ns12:moviebanner" type="xsd:string"/>
+   <ns1:parameter qname="ns12:category" type="xsd:string"/>
+   <ns1:parameter qname="ns12:reldate" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="searchPerson" qname="ns13:searchPerson" returnQName="ns13:searchPersonReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns13:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns13:mtype" type="xsd:string"/>
+   <ns1:parameter qname="ns13:address" type="xsd:string"/>
+   <ns1:parameter qname="ns13:city" type="xsd:string"/>
+   <ns1:parameter qname="ns13:state" type="xsd:string"/>
+   <ns1:parameter qname="ns13:zipcode" type="xsd:string"/>
+   <ns1:parameter qname="ns13:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns13:country" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="movieCount" qname="ns14:movieCount" returnQName="ns14:movieCountReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="movieDetails" qname="ns15:movieDetails" returnQName="ns15:movieDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:movieid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="delMovies" qname="ns16:delMovies" returnQName="ns16:delMoviesReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:movieid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updateMinfo" qname="ns17:updateMinfo" returnQName="ns17:updateMinfoReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:movieid" type="xsd:string"/>
+   <ns1:parameter qname="ns17:moviename" type="xsd:string"/>
+   <ns1:parameter qname="ns17:moviebanner" type="xsd:string"/>
+   <ns1:parameter qname="ns17:category" type="xsd:string"/>
+   <ns1:parameter qname="ns17:releasedate" type="xsd:string"/>
+   <ns1:parameter qname="ns17:mcopies" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="personDetail" qname="ns18:personDetail" returnQName="ns18:personDetailReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="movieName" qname="ns19:movieName" returnQName="ns19:movieNameReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:movid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="movieIssue" qname="ns20:movieIssue" returnQName="ns20:movieIssueReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="signIn" qname="ns21:signIn" returnQName="ns21:signInReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns21:username" type="xsd:string"/>
+   <ns1:parameter qname="ns21:password" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="premiumtableupdation" qname="ns22:premiumtableupdation" returnQName="ns22:premiumtableupdationReturn" returnType="xsd:string" soapAction="" xmlns:ns22="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns22:movieorder" type="xsd:string"/>
+   <ns1:parameter qname="ns22:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="simpletableupdation" qname="ns23:simpletableupdation" returnQName="ns23:simpletableupdationReturn" returnType="xsd:string" soapAction="" xmlns:ns23="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns23:cardnum" type="xsd:string"/>
+   <ns1:parameter qname="ns23:cvv" type="xsd:string"/>
+   <ns1:parameter qname="ns23:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns23:movieorder" type="xsd:string"/>
+   <ns1:parameter qname="ns23:date" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="personDetails" qname="ns24:personDetails" returnQName="ns24:personDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns24="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns24:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="returnmovofmember" qname="ns25:returnmovofmember" returnQName="ns25:returnmovofmemberReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:memberid" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="updateLoggedInfo" qname="ns26:updateLoggedInfo" returnQName="ns26:updateLoggedInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns26="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:username" type="xsd:string"/>
+   <ns1:parameter qname="ns26:finallogintime" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="createMembers" qname="ns27:createMembers" returnQName="ns27:createMembersReturn" returnType="xsd:string" soapAction="" xmlns:ns27="http://services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:fname" type="xsd:string"/>
+   <ns1:parameter qname="ns27:lname" type="xsd:string"/>
+   <ns1:parameter qname="ns27:mtype" type="xsd:string"/>
+   <ns1:parameter qname="ns27:address" type="xsd:string"/>
+   <ns1:parameter qname="ns27:city" type="xsd:string"/>
+   <ns1:parameter qname="ns27:state" type="xsd:string"/>
+   <ns1:parameter qname="ns27:zipcode" type="xsd:string"/>
+   <ns1:parameter qname="ns27:memberid" type="xsd:string"/>
+   <ns1:parameter qname="ns27:mdate" type="xsd:string"/>
+   <ns1:parameter qname="ns27:country" type="xsd:string"/>
+   <ns1:parameter qname="ns27:email" type="xsd:string"/>
+   <ns1:parameter qname="ns27:password" type="xsd:string"/>
+   <ns1:parameter qname="ns27:logintime" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="searchMovie personDetail createMembers personDetails allMovies updatePinfo sMembers createMovies simpletableupdation movieDetails searchPerson allPersons payment movieProfile movieIssue delMovies updateMinfo movieCount delmember premiumtableupdation returnMovie movieName updateLoggedInfo returnmovofmember rentMovie signIn pMembers"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="VideoLibraryManagement"/>
+  <ns1:parameter name="className" value="services.VideoLibraryManagement"/>
+  <ns1:parameter name="wsdlServicePort" value="VideoLibraryManagement"/>
+  <ns1:parameter name="schemaQualified" value="http://services"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services"/>
+  <ns1:parameter name="wsdlServiceElement" value="VideoLibraryManagementService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
